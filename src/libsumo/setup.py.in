@@ -1,0 +1,24 @@
+from distutils.core import setup, Extension
+
+ext = Extension(
+    'libsumo',
+    sources = ['${CMAKE_CURRENT_SOURCE_DIR}/libsumo.i'],
+    libraries = '${sumolibs}'.split(';'),
+    swig_opts = ['-c++'],
+    include_dirs = '${PYLIBSUMO_INCLUDES}'.split(';')
+    libraries = [
+        ${PYSUMO_LIBS}
+    ],
+    $<PYSUMO_LIBS>
+)
+
+setup(name='libsumo',
+    version='${PACKAGE_VERSION}',
+    ext_package = '',
+    ext_modules = [ext],
+    description = 'Python interface to SUMO',
+    author = '',
+    author_email = '',
+    url = 'https://github.com/eclipse/sumo',
+    long_description = ''
+)
